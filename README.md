@@ -9,14 +9,14 @@
 <br />
 
 ![Status](https://img.shields.io/badge/status-live-7C3AED?style=flat-square&labelColor=0a0a14)
-![Pipeline](https://img.shields.io/badge/pipeline-worker%20%2B%20actions-8a4fff?style=flat-square&labelColor=0a0a14)
-![Data](https://img.shields.io/badge/data-json%20only-7C3AED?style=flat-square&labelColor=0a0a14)
-![Tool](https://img.shields.io/badge/midi2lua-bethebluu.com-8a4fff?style=flat-square&labelColor=0a0a14)
+![Data](https://img.shields.io/badge/data-json%20only-8a4fff?style=flat-square&labelColor=0a0a14)
+![Tool](https://img.shields.io/badge/midi2lua-bethebluu.com-7C3AED?style=flat-square&labelColor=0a0a14)
+![Discord](https://img.shields.io/discord/180865380632363008?style=flat-square&logo=discord&logoColor=white&label=discord&color=8a4fff&labelColor=0a0a14)
 
 <br />
 
-[![Open midi2lua](https://img.shields.io/badge/%E2%86%92%20Open%20midi2lua-7C3AED?style=for-the-badge&labelColor=0a0a14)](https://bethebluu.com/midi2lua)
-[![Discord](https://img.shields.io/badge/%E2%86%92%20Discord-8a4fff?style=for-the-badge&labelColor=0a0a14)](https://discord.gg/HKvZjPfNTH)
+[![Open midi2lua](https://img.shields.io/badge/%E2%86%92%20Open%20midi2lua-7C3AED?style=for-the-badge&logo=lua&logoColor=white&labelColor=0a0a14)](https://bethebluu.com/midi2lua)
+[![Discord](https://img.shields.io/badge/%E2%86%92%20Discord-8a4fff?style=for-the-badge&logo=discord&logoColor=white&labelColor=0a0a14)](https://discord.gg/HKvZjPfNTH)
 
 <br />
 
@@ -37,17 +37,17 @@ Every song is stored as **structured note-data (JSON)**, never executable Lua, s
 ## How it works
 
 ```
-midi2lua (web)  ──Share──►  Cloudflare Worker  ──►  pending/
-  (Turnstile + validation, off-VPS)                    │
-                                                  review (approve)
-                                                        ▼
-piano-ui.lua  ◄──fetch──  index.json  ◄──build──  approved/
+midi2lua (web)  >> Share >>  Cloudflare Worker  >>  pending/
+  (Turnstile + validation, off-VPS)                   |
+                                                 review (approve)
+                                                       v
+piano-ui.lua  << fetch <<  index.json  << build <<  approved/
   Community genre              GitHub Action
 ```
 
 | Step | What happens |
 |---|---|
-| **Share** | midi2lua posts structured events + title to the Worker (with Turnstile) |
+| **Share** | midi2lua posts structured events and a title to the Worker (with Turnstile) |
 | **Validate** | Worker verifies the captcha, checks the data, dedupes, writes `pending/` |
 | **Review** | A maintainer approves (move to `approved/`) or rejects (delete) |
 | **Build** | A GitHub Action compiles `approved/*.json` into `index.json` |
@@ -85,7 +85,7 @@ A song is structured events, never code:
 }
 ```
 
-`n` note — keys + hold beats · `r` rest — beats · `v` velocity · `p` pedal — down/up
+`n` note (keys, hold beats) · `r` rest (beats) · `v` velocity · `p` pedal (down / up)
 
 <br />
 
@@ -96,7 +96,7 @@ Upload        Cloudflare Worker (off-VPS, free tier)
 Anti-abuse    Cloudflare Turnstile + content validation
 Storage       GitHub repository (this one)
 Build         GitHub Actions
-Delivery      raw.githubusercontent.com  to  Roblox HttpGet
+Delivery      raw.githubusercontent.com to Roblox HttpGet
 Tool          bethebluu.com/midi2lua
 ```
 
