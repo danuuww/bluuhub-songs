@@ -35,7 +35,7 @@ Community song store for **BluuHub Piano** (Roblox), powered by **[midi2lua](htt
 ## Usage
 
 **1. Convert a MIDI**
-Open **[midi2lua](https://bethebluu.com/midi2lua)**, drop a `.mid` file, choose your options, and hit Generate.
+Open **[bethebluu.com/midi2lua](https://bethebluu.com/midi2lua)**, drop a `.mid` file, choose your options, and hit Generate.
 
 **2. Play it in BluuHub Piano**
 Copy the generated script into **BluuHub Piano → Add Songs**, or open the **loadstring** tab to grab a ready hosted link, no setup needed.
@@ -85,7 +85,7 @@ A song is structured events, never code:
 
 <br />
 
-Part of **BluuHub**. Songs are reviewed before going live.
+Powered by **BluuHub**.
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8a4fff,100:7C3AED&height=100&section=footer" />
 
