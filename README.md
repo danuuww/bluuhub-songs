@@ -28,30 +28,20 @@
 
 ## Overview
 
-Backing store for **BluuHub Piano** (Roblox) community songs and hosted **[midi2lua](https://bethebluu.com/midi2lua)** scripts. Convert a MIDI on the web, share it here, and approved songs flow straight into the in-game **Community** library.
-
-Every song is stored as **structured note-data (JSON)**, never executable Lua, so an approved song can never run code on a player's machine.
+Community song store for **BluuHub Piano** (Roblox), powered by **[midi2lua](https://bethebluu.com/midi2lua)**. Turn any MIDI into a playable song on the web, then play it in game or share it with everyone.
 
 <br />
 
-## How it works
+## Usage
 
-```
-midi2lua (web)  >> Share >>  Cloudflare Worker  >>  pending/
-  (Turnstile + validation, off-VPS)                   |
-                                                 review (approve)
-                                                       v
-piano-ui.lua  << fetch <<  index.json  << build <<  approved/
-  Community genre              GitHub Action
-```
+**1. Convert a MIDI**
+Open **[midi2lua](https://bethebluu.com/midi2lua)**, drop a `.mid` file, choose your options, and hit Generate.
 
-| Step | What happens |
-|---|---|
-| **Share** | midi2lua posts structured events and a title to the Worker (with Turnstile) |
-| **Validate** | Worker verifies the captcha, checks the data, dedupes, writes `pending/` |
-| **Review** | A maintainer approves (move to `approved/`) or rejects (delete) |
-| **Build** | A GitHub Action compiles `approved/*.json` into `index.json` |
-| **Serve** | `piano-ui.lua` fetches `index.json` and renders the Community genre |
+**2. Play it in BluuHub Piano**
+Copy the generated script into **BluuHub Piano → Add Songs**, or open the **loadstring** tab to grab a ready hosted link, no setup needed.
+
+**3. Share with the community** *(optional)*
+Hit **Share to BluuHub**. After a quick review it shows up in the in-game **Community** genre for every player.
 
 <br />
 
@@ -86,19 +76,6 @@ A song is structured events, never code:
 ```
 
 `n` note (keys, hold beats) · `r` rest (beats) · `v` velocity · `p` pedal (down / up)
-
-<br />
-
-## Tech
-
-```
-Upload        Cloudflare Worker (off-VPS, free tier)
-Anti-abuse    Cloudflare Turnstile + content validation
-Storage       GitHub repository (this one)
-Build         GitHub Actions
-Delivery      raw.githubusercontent.com to Roblox HttpGet
-Tool          bethebluu.com/midi2lua
-```
 
 <br />
 
