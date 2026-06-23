@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7C3AED,100:8a4fff&height=200&section=header&text=BLUUHUB%20SONGS&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=Community%20song%20store%20%C2%B7%20midi2lua&descAlignY=60&descSize=16&descColor=cbb8ff" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7C3AED,100:8a4fff&height=200&section=header&text=BLUUHUB&fontSize=56&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=Community%20song%20store%20%C2%B7%20midi2lua&descAlignY=60&descSize=16&descColor=cbb8ff" />
 
 <br />
 
