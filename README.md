@@ -49,9 +49,9 @@ Hit **Share to BluuHub**. After a quick review it shows up in the in-game **Comm
 
 ```
 bluuhub-songs/
-├── pending/      submissions awaiting review (not live)
-├── approved/     approved songs (one .json each)
-├── index.json    built live manifest, fetched by piano-ui.lua
+├── pending/      submissions awaiting review (not live).
+├── approved/     approved songs.
+├── index.json    built live manifest, fetched by BluuHub Piano.
 ├── scripts/      hosted .txt for loadstring links
 └── .github/workflows/build-index.yml
 ```
